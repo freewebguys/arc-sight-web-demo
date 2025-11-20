@@ -1,0 +1,70 @@
+{
+  "insights": [
+    {
+      "description": "Multiple domains write to the same DB table. Table: sessions",
+      "domains": [
+        "Auth",
+        "Billing"
+      ],
+      "locations": [
+        {
+          "file": "api/admin_user_modify.sql",
+          "line": 1
+        },
+        {
+          "file": "billing/billing_user_update.sql",
+          "line": 1
+        }
+      ],
+      "recommendation": "Introduce a single mediated data access service for this table.",
+      "rule_id": "DB_SHARED_WRITE",
+      "severity": "high",
+      "table": "sessions"
+    },
+    {
+      "description": "Multiple domains write to the same DB table. Table: users",
+      "domains": [
+        "Auth",
+        "Billing"
+      ],
+      "locations": [
+        {
+          "file": "api/admin_user_modify.sql",
+          "line": 1
+        },
+        {
+          "file": "auth/auth_user_insert.sql",
+          "line": 1
+        },
+        {
+          "file": "billing/billing_user_update.sql",
+          "line": 1
+        },
+        {
+          "file": "supabase_sql/api/admin_user_modify.sql",
+          "line": 1
+        },
+        {
+          "file": "supabase_sql/auth/auth_user_insert.sql",
+          "line": 1
+        },
+        {
+          "file": "supabase_sql/billing/billing_user_update.sql",
+          "line": 1
+        }
+      ],
+      "recommendation": "Introduce a single mediated data access service for this table.",
+      "rule_id": "DB_SHARED_WRITE",
+      "severity": "high",
+      "table": "users"
+    }
+  ],
+  "metadata": {
+    "repo_path": "/Users/fionatynan/Arc Sight V1 (Real)/demo_repos/supabase_sql_v2",
+    "rules_loaded": 1,
+    "scan_type": "static_analysis",
+    "total_domains": 2,
+    "total_files": 16,
+    "total_tables": 2
+  }
+}

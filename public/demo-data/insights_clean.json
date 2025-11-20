@@ -1,0 +1,28 @@
+{
+  "insights": [
+    {
+      "rule_id": "DB_SHARED_WRITE",
+      "severity": "high",
+      "table": "users",
+      "domains": [
+        "Auth",
+        "Billing",
+        "Admin"
+      ],
+      "description": "Multiple domains write to 'users' table — indicating domain fusion, ownership collapse, and architectural fragility.",
+      "locations": [
+        {
+          "file": "auth/auth_user_insert.sql"
+        },
+        {
+          "file": "billing/billing_user_update.sql"
+        },
+        {
+          "file": "api/admin_user_modify.sql"
+        }
+      ],
+      "recommendation": "Introduce a mediated UserOwnership service to prevent cross-domain writes."
+    }
+  ]
+}
+

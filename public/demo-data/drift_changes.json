@@ -1,0 +1,101 @@
+{
+  "changed_insights": [
+    {
+      "current": {
+        "description": "Multiple domains write to the same DB table. Table: users",
+        "domains": [
+          "Auth",
+          "Billing"
+        ],
+        "locations": [
+          {
+            "file": "api/admin_user_modify.sql",
+            "line": 1
+          },
+          {
+            "file": "auth/auth_user_insert.sql",
+            "line": 1
+          },
+          {
+            "file": "billing/billing_user_update.sql",
+            "line": 1
+          },
+          {
+            "file": "supabase_sql/api/admin_user_modify.sql",
+            "line": 1
+          },
+          {
+            "file": "supabase_sql/auth/auth_user_insert.sql",
+            "line": 1
+          },
+          {
+            "file": "supabase_sql/billing/billing_user_update.sql",
+            "line": 1
+          }
+        ],
+        "recommendation": "Introduce a single mediated data access service for this table.",
+        "rule_id": "DB_SHARED_WRITE",
+        "severity": "high",
+        "table": "users"
+      },
+      "key": "DB_SHARED_WRITE:users",
+      "previous": {
+        "description": "Multiple domains write to the same DB table. Table: users",
+        "domains": [
+          "Auth",
+          "Billing"
+        ],
+        "locations": [
+          {
+            "file": "api/admin_user_modify.sql",
+            "line": 1
+          },
+          {
+            "file": "auth/auth_user_insert.sql",
+            "line": 1
+          },
+          {
+            "file": "billing/billing_user_update.sql",
+            "line": 1
+          }
+        ],
+        "recommendation": "Introduce a single mediated data access service for this table.",
+        "rule_id": "DB_SHARED_WRITE",
+        "severity": "high",
+        "table": "users"
+      }
+    }
+  ],
+  "current_insights_count": 2,
+  "new_insights": [
+    {
+      "description": "Multiple domains write to the same DB table. Table: sessions",
+      "domains": [
+        "Auth",
+        "Billing"
+      ],
+      "locations": [
+        {
+          "file": "api/admin_user_modify.sql",
+          "line": 1
+        },
+        {
+          "file": "billing/billing_user_update.sql",
+          "line": 1
+        }
+      ],
+      "recommendation": "Introduce a single mediated data access service for this table.",
+      "rule_id": "DB_SHARED_WRITE",
+      "severity": "high",
+      "table": "sessions"
+    }
+  ],
+  "previous_insights_count": 1,
+  "resolved_insights": [],
+  "status": "analyzed",
+  "summary": {
+    "changed_count": 1,
+    "new_count": 1,
+    "resolved_count": 0
+  }
+}
