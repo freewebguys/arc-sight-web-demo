@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import NavBar from '../components/NavBar';
 
 interface Insight {
   description: string;
@@ -55,8 +56,10 @@ export default function Demo() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
-      <div className="max-w-4xl mx-auto px-6 py-10 space-y-12">
+    <div>
+      <NavBar />
+      <main className="max-w-4xl mx-auto px-4 py-10">
+        <div className="space-y-12">
         {/* Section 1: Scan 1 — Initial Architecture */}
         <section>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Architecture Drift Demo</h1>
@@ -188,7 +191,8 @@ export default function Demo() {
             View Raw Results →
           </Link>
         </div>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }
