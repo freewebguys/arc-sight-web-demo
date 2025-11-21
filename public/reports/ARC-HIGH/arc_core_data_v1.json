@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "1.0.0",
+  "arcId": "ARC-HIGH",
+  "assessmentDate": "2025-02-11",
+  "architectureMetrics": {
+    "architectureStabilityIndex": 34,
+    "survivalCapacity": 0,
+    "instabilityTier": "Critical — Stop Building"
+  },
+  "riskFactors": [
+    {
+      "name": "DB_SHARED_WRITE",
+      "level": "high",
+      "note": "Multiple domains write to shared tables: users (5 domains), payments (3 domains), sessions (3 domains)"
+    }
+  ],
+  "failureTrajectory": {
+    "order": ["users", "payments", "sessions"],
+    "shockwaveRadius": 6
+  },
+  "underwritingScore": {
+    "architectureViability": 34,
+    "scalabilityReadiness": 25,
+    "investmentStability": 30
+  },
+  "recommendedAction": "pause-building"
+}
+
