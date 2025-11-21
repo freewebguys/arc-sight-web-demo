@@ -21,26 +21,39 @@ export default function ReportPage() {
   useEffect(() => {
     if (!arcId || typeof arcId !== 'string') return;
 
-    // Load both markdown and JSON report
-    Promise.all([
-      fetch(`/api/reports/${arcId}/summary`).then(res => {
-        if (!res.ok) throw new Error('Summary not found');
-        return res.text();
-      }),
-      fetch(`/api/reports/${arcId}/json`).then(res => {
-        if (!res.ok) throw new Error('Report JSON not found');
-        return res.json();
-      })
-    ])
-      .then(([text, json]) => {
-        setMarkdown(text);
-        setReportJson(json);
+    const loadReport = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Load markdown content from public folder
+        const markdownRes = await fetch(`/reports/${arcId}/arc_summary.md`);
+        if (!markdownRes.ok) throw new Error('Summary not found');
+        const markdownText = await markdownRes.text();
+        setMarkdown(markdownText);
+
+        // Load JSON if available, otherwise set null
+        try {
+          const jsonRes = await fetch(`/reports/${arcId}/arc_report.json`);
+          if (jsonRes.ok) {
+            const jsonData = await jsonRes.json();
+            setReportJson(jsonData);
+          } else {
+            setReportJson(null); // Mark as demo data
+          }
+        } catch (err) {
+          setReportJson(null);
+        }
+
         setLoading(false);
-      })
-      .catch((err) => {
-        setError(err.message);
+      } catch (error) {
+        console.error("Error loading report:", error);
+        setError(error instanceof Error ? error.message : 'Failed to load report');
         setLoading(false);
-      });
+      }
+    };
+
+    loadReport();
   }, [arcId]);
 
   if (!arcId || typeof arcId !== 'string') {
