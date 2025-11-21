@@ -82,65 +82,69 @@ export default function ArcDrift() {
   return (
     <div>
       <NavBar />
-      <main className="max-w-4xl mx-auto px-4 py-10">
-        <h1 className="text-4xl md:text-6xl font-semibold text-gray-900 mb-8">Architecture Drift Analysis</h1>
+      <main className="bg-gray-50 min-h-screen py-12">
+        <div className="max-w-4xl mx-auto px-6 space-y-12">
+        <h1 className="text-3xl font-bold text-gray-900 mb-8">Architecture Drift Analysis</h1>
 
-        {/* Scan 1 – Architecture Baseline */}
-        <div className="bg-white shadow-sm rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">1️⃣ Scan 1 – Architecture Baseline</h2>
-          {scan1 ? (
-            <div className="space-y-4">
-              {scan1.insights.map((insight, idx) => (
-                <div key={idx} className="border-l-2 border-gray-300 pl-4">
-                  <p className="font-medium text-gray-900 mb-1">Table: <span className="font-normal">{insight.table}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Domains involved: <span className="font-normal">{insight.domains.join(', ')}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Severity: <span className="font-normal capitalize">{insight.severity}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Change type: <span className="font-normal">persistent risk</span></p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-gray-500">Loading...</p>
-          )}
-        </div>
+        {/* Side-by-side comparison for Scan 1 vs Scan 2 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Scan 1 – Architecture Baseline */}
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Scan 1 – Architecture Baseline</h2>
+            {scan1 ? (
+              <div className="space-y-4">
+                {scan1.insights.map((insight, idx) => (
+                  <div key={idx} className="border-l-2 border-gray-300 pl-4">
+                    <p className="font-medium text-gray-900 mb-1">Table: <span className="font-normal text-gray-600">{insight.table}</span></p>
+                    <p className="font-medium text-gray-900 mb-1">Domains involved: <span className="font-normal text-gray-600">{insight.domains.join(', ')}</span></p>
+                    <p className="font-medium text-gray-900 mb-1">Severity: <span className="font-normal capitalize text-gray-600">{insight.severity}</span></p>
+                    <p className="font-medium text-gray-900 mb-1">Change type: <span className="font-normal text-gray-600">persistent risk</span></p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-gray-500">Loading...</p>
+            )}
+          </div>
 
-        {/* Scan 2 – Architecture After Change */}
-        <div className="bg-white shadow-sm rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">2️⃣ Scan 2 – Architecture After Change</h2>
-          {scan2 ? (
-            <div className="space-y-4">
-              {scan2.insights.map((insight, idx) => (
-                <div key={idx} className="border-l-2 border-gray-300 pl-4">
-                  <p className="font-medium text-gray-900 mb-1">Table: <span className="font-normal">{insight.table}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Domains involved: <span className="font-normal">{insight.domains.join(', ')}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Severity: <span className="font-normal capitalize">{insight.severity}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Change type: <span className="font-normal">persistent risk</span></p>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-gray-500">Loading...</p>
-          )}
+          {/* Scan 2 – Architecture After Change */}
+          <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+            <h2 className="text-xl font-semibold text-gray-800 mb-4">Scan 2 – Architecture After Change</h2>
+            {scan2 ? (
+              <div className="space-y-4">
+                {scan2.insights.map((insight, idx) => (
+                  <div key={idx} className="border-l-2 border-gray-300 pl-4">
+                    <p className="font-medium text-gray-900 mb-1">Table: <span className="font-normal text-gray-600">{insight.table}</span></p>
+                    <p className="font-medium text-gray-900 mb-1">Domains involved: <span className="font-normal text-gray-600">{insight.domains.join(', ')}</span></p>
+                    <p className="font-medium text-gray-900 mb-1">Severity: <span className="font-normal capitalize text-gray-600">{insight.severity}</span></p>
+                    <p className="font-medium text-gray-900 mb-1">Change type: <span className="font-normal text-gray-600">persistent risk</span></p>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-gray-500">Loading...</p>
+            )}
+          </div>
         </div>
 
         {/* Drift Detection Summary */}
-        <div className="bg-white shadow-sm rounded-lg p-6 mb-6">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-4">3️⃣ Drift Detection Summary</h2>
+        <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-6 space-y-4">
+          <h2 className="text-xl font-semibold text-gray-800 mb-4">Drift Detection Summary</h2>
           {drift ? (
             <div className="space-y-4">
               {drift.new_insights.map((insight, idx) => (
                 <div key={idx} className="border-l-2 border-red-400 pl-4">
-                  <p className="font-medium text-gray-900 mb-1">Table: <span className="font-normal">{insight.table}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Domains involved: <span className="font-normal">{insight.domains.join(', ')}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Severity: <span className="font-normal capitalize">{insight.severity}</span></p>
+                  <p className="font-medium text-gray-900 mb-1">Table: <span className="font-normal text-gray-600">{insight.table}</span></p>
+                  <p className="font-medium text-gray-900 mb-1">Domains involved: <span className="font-normal text-gray-600">{insight.domains.join(', ')}</span></p>
+                  <p className="font-medium text-gray-900 mb-1">Severity: <span className="font-normal capitalize text-gray-600">{insight.severity}</span></p>
                   <p className="font-medium text-gray-900 mb-1">Change type: <span className="font-normal text-red-600">new risk</span></p>
                 </div>
               ))}
               {drift.changed_insights.map((change, idx) => (
                 <div key={idx} className="border-l-2 border-yellow-400 pl-4">
-                  <p className="font-medium text-gray-900 mb-1">Table: <span className="font-normal">{change.current.table}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Domains involved: <span className="font-normal">{change.current.domains.join(', ')}</span></p>
-                  <p className="font-medium text-gray-900 mb-1">Severity: <span className="font-normal capitalize">{change.current.severity}</span></p>
+                  <p className="font-medium text-gray-900 mb-1">Table: <span className="font-normal text-gray-600">{change.current.table}</span></p>
+                  <p className="font-medium text-gray-900 mb-1">Domains involved: <span className="font-normal text-gray-600">{change.current.domains.join(', ')}</span></p>
+                  <p className="font-medium text-gray-900 mb-1">Severity: <span className="font-normal capitalize text-gray-600">{change.current.severity}</span></p>
                   <p className="font-medium text-gray-900 mb-1">Change type: <span className="font-normal text-yellow-600">persistent risk</span></p>
                 </div>
               ))}
@@ -151,38 +155,38 @@ export default function ArcDrift() {
         </div>
 
         {/* Collapsible JSON Blocks */}
-        <div className="space-y-4 mb-12">
-          <details className="border border-gray-300 rounded p-4">
+        <div className="space-y-4">
+          <details className="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
             <summary className="cursor-pointer font-medium text-gray-900 mb-2">
               scan_1.json
             </summary>
-            <pre className="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
+            <pre className="bg-gray-100 rounded-md p-4 text-sm text-gray-700 overflow-x-auto mt-2">
               {scan1Raw || 'Loading...'}
             </pre>
           </details>
 
-          <details className="border border-gray-300 rounded p-4">
+          <details className="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
             <summary className="cursor-pointer font-medium text-gray-900 mb-2">
               scan_2.json
             </summary>
-            <pre className="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
+            <pre className="bg-gray-100 rounded-md p-4 text-sm text-gray-700 overflow-x-auto mt-2">
               {scan2Raw || 'Loading...'}
             </pre>
           </details>
 
-          <details className="border border-gray-300 rounded p-4">
+          <details className="bg-white border border-gray-200 rounded-lg shadow-sm p-4">
             <summary className="cursor-pointer font-medium text-gray-900 mb-2">
               drift_changes.json
             </summary>
-            <pre className="bg-gray-100 p-3 rounded text-sm overflow-x-auto">
+            <pre className="bg-gray-100 rounded-md p-4 text-sm text-gray-700 overflow-x-auto mt-2">
               {driftRaw || 'Loading...'}
             </pre>
           </details>
         </div>
 
         {/* Footer Text */}
-        <div className="border-t border-gray-300 pt-8 mb-8">
-          <p className="text-gray-700 text-center">
+        <div className="border-t border-gray-200 pt-8">
+          <p className="text-base text-gray-600 leading-relaxed text-center">
             This drift was detected without AI, without runtime tracing, and without human review — purely through deterministic analysis of code structure and schema ownership.
           </p>
         </div>
@@ -191,10 +195,11 @@ export default function ArcDrift() {
         <div className="text-center">
           <a
             href="mailto:fiona@arcsight.io"
-            className="inline-block bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition font-medium"
+            className="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition font-medium"
           >
             Run ArcSight on My Architecture
           </a>
+        </div>
         </div>
       </main>
     </div>
