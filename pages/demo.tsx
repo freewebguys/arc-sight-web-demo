@@ -58,6 +58,40 @@ export default function Demo() {
   return (
     <Layout>
       <div className="space-y-12">
+        <div>
+          <h2 className="text-xl font-semibold mb-2">🧠 Which one feels like your product?</h2>
+          <p className="text-sm text-gray-600 mb-6">
+            Every product lives somewhere between stability and collapse. Explore the three survival states.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <a href="/report/ARC-LOW" className="p-4 border rounded-lg bg-white hover:bg-gray-50 shadow-sm">
+              <p className="font-bold">🟢 Solid Foundation</p>
+              <p className="text-sm text-gray-600">Stable architecture. Safe to build.</p>
+            </a>
+            <a href="/report/ARC-MEDIUM" className="p-4 border rounded-lg bg-white hover:bg-gray-50 shadow-sm">
+              <p className="font-bold">🟠 Faith but Fragile</p>
+              <p className="text-sm text-gray-600">Works now — but risky to expand further.</p>
+            </a>
+            <a href="/report/ARC-HIGH" className="p-4 border rounded-lg bg-white hover:bg-gray-50 shadow-sm">
+              <p className="font-bold">🔴 House of Cards</p>
+              <p className="text-sm text-gray-600">One more feature could destabilize multiple domains.</p>
+            </a>
+            <div className="p-4 bg-gray-200 border rounded-lg opacity-50 cursor-not-allowed">
+              <p className="font-bold">⚫ Arc-RIP (Coming Soon)</p>
+              <p className="text-sm text-gray-600">
+                Beyond repair — requires architectural reset before any further building.
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 p-4 bg-gray-100 border rounded-lg text-center">
+            <p className="text-sm text-gray-700 mb-2">Want to see your real survival score?</p>
+            <Link href="/survival-check" className="underline font-medium">
+              Run ArcSight Survival Check on your MVP →
+            </Link>
+          </div>
+        </div>
+
         {/* Section 1: Scan 1 — Initial Architecture */}
         <section>
           <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">Architecture Drift Demo</h1>

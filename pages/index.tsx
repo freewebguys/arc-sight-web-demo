@@ -1,26 +1,30 @@
+// ArcSight is Build Survival Intelligence — predicting structural deterioration before it becomes catastrophic.
 import Link from 'next/link';
 import Layout from '../components/Layout';
 
 export default function Home() {
   return (
     <Layout>
-      <div className="flex items-center justify-center min-h-[60vh]">
+      <div className="space-y-8">
         <div className="text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">
-            Code changes daily.
-            <br />
-            Architecture silently decays.
+          <h1 className="text-4xl font-bold text-center mb-6">
+            ⚠️ How many features before your product breaks?
           </h1>
-          <p className="text-gray-700 leading-relaxed mb-8">
-            ArcSight detects structural drift — before systems break.
-          </p>
-          <Link
-            href="/arc-drift"
-            className="inline-block bg-gray-900 text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition font-medium"
-          >
-            See Drift Demo
+        </div>
+
+        <div className="max-w-md mx-auto space-y-4">
+          <Link href="/demo" className="block p-4 text-center bg-white border rounded-lg shadow-sm hover:bg-gray-50">
+            🧪 View Sample Survival States
+          </Link>
+
+          <Link href="/survival-check" className="block p-4 text-center bg-black text-white rounded-lg shadow hover:bg-gray-800">
+            🚀 Run Survival Check on My MVP
           </Link>
         </div>
+
+        <p className="text-center text-xs text-gray-500 mt-12">
+          ArcSight doesn't help you build faster — it tells you when to stop building before structural instability begins.
+        </p>
       </div>
     </Layout>
   );
