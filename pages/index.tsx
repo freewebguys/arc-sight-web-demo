@@ -10,6 +10,10 @@ export default function Home() {
           <h1 className="text-4xl font-bold text-center mb-6">
             ⚠️ How many features before your product breaks?
           </h1>
+          <p className="text-sm text-gray-500 mb-8">
+            ArcSight is the first Build Survival Intelligence system — 
+            forecasting architectural collapse before it happens.
+          </p>
         </div>
 
         <div className="max-w-md mx-auto space-y-4">
@@ -23,7 +27,8 @@ export default function Home() {
         </div>
 
         <p className="text-center text-xs text-gray-500 mt-12">
-          ArcSight doesn't help you build faster — it tells you when to stop building before structural instability begins.
+          ArcSight doesn't help you build faster — 
+          it tells you when to stop building before your architecture silently begins to break.
         </p>
       </div>
     </Layout>

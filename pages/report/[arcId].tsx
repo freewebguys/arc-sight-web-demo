@@ -101,11 +101,11 @@ export default function ReportPage() {
           ArcSight Survival Report — {arcId}
         </h1>
 
-        <div className="mb-6 p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+        <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded mb-6">
           <p className="text-sm text-gray-800">
-            ArcSight forecasts when structural collapse is likely,
-            how much Survival Capacity your architecture has left,
-            and when you should stop building before further damage occurs.
+            ArcSight doesn't analyze your code — it forecasts when structural instability will emerge,
+            how much Survival Capacity remains,
+            and when you should pause building before you unintentionally break your architecture.
           </p>
         </div>
 
@@ -137,12 +137,12 @@ export default function ReportPage() {
           <div className="mb-4 p-3 bg-gray-100 border rounded">
             <p className="text-sm font-medium mb-1">⏳ Survival Capacity</p>
             <small className="text-xs text-gray-500">
-              (approximate number of safe feature additions before instability)
+              (estimated number of feature changes before risk of structural failure)
             </small>
             <p className="mt-2"><strong>{survivalText}</strong></p>
             {reportJson.scoring.featureCapacityLeft <= 1 && (
               <p className="text-sm text-red-600 mt-2">
-                ⚠ Threshold reached — next major feature may trigger structural instability.
+                ⚠ Survival Threshold reached — your next major feature could trigger architectural instability.
               </p>
             )}
           </div>
@@ -151,6 +151,26 @@ export default function ReportPage() {
         <div className="prose max-w-3xl p-6 bg-white rounded-lg shadow-sm border">
           <ReactMarkdown>{markdown}</ReactMarkdown>
         </div>
+
+        {/* ArcMoment Capture Opportunity:
+        Record user reaction if they express hesitation, urgency, or say they would:
+        - Stop, delay, or rethink building
+        - Show this to cofounder/CTO/dev
+        - Fix before adding features
+        - Feel anxious, uncertain, or uncomfortable */}
+        <div className="mt-8 p-4 bg-gray-50 border rounded-lg">
+          <p className="text-sm text-gray-700">
+            🧠 If this were your real product — what would you stop, delay, or rethink before building anything new?
+          </p>
+        </div>
+
+        {isDemo && (
+          <div className="mb-6 text-xs text-gray-500 italic">
+            People respond differently to this report — some feel confident, some feel nervous,
+            some stop building, and some forward it to their team.  
+            Your reaction is meaningful.
+          </div>
+        )}
 
         <div className="mt-6 p-4 bg-gray-50 border rounded-lg">
           <p className="text-sm text-gray-700 mb-1">📤 Share this survival report</p>
@@ -172,7 +192,8 @@ export default function ReportPage() {
         </div>
 
         <p className="text-center text-xs text-gray-500 mt-12">
-          ArcSight doesn't help you build faster — it tells you when to stop building before structural instability begins.
+          ArcSight doesn't help you build faster — 
+          it tells you when to stop building before your architecture silently begins to break.
         </p>
       </div>
     </Layout>
