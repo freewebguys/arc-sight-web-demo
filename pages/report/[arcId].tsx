@@ -1,4 +1,6 @@
 // ArcSight is Build Survival Intelligence — predicting structural deterioration before it becomes catastrophic.
+// This file renders an ArcSight ADR+ (Architectural Decision Record) —
+// a decision artifact used BEFORE building, hiring, or funding.
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import ReactMarkdown from "react-markdown";
@@ -114,6 +116,14 @@ export default function ReportPage() {
           ArcSight Survival Report — {arcId}
         </h1>
 
+        {reportJson?.arcRecord && (
+          <div className="text-xs text-gray-500 mb-4">
+            <p><strong>ArcSight Architectural Decision Record (ADR+ v1.0)</strong></p>
+            <p>Decision Context: {reportJson.arcRecord.decisionContext}</p>
+            <p>Issued For: {reportJson.arcRecord.issuedFor}</p>
+          </div>
+        )}
+
         <div className="p-4 bg-yellow-50 border-l-4 border-yellow-400 rounded mb-6">
           <p className="text-sm text-gray-800">
             ArcSight doesn't analyze your code — it forecasts when structural instability will emerge,
@@ -163,6 +173,16 @@ export default function ReportPage() {
 
         <div className="prose max-w-3xl p-6 bg-white rounded-lg shadow-sm border">
           <ReactMarkdown>{markdown}</ReactMarkdown>
+        </div>
+
+        <div className="mt-10 p-4 bg-gray-50 border-l-4 border-gray-300 rounded">
+          <p className="text-sm font-semibold mb-2">🧠 How to Use This Architectural Decision Record</p>
+          <ul className="text-xs text-gray-600 space-y-1">
+            <li><strong>Founder:</strong> Decide whether to pause new features before launch.</li>
+            <li><strong>CTO:</strong> Evaluate stabilization scope & domain ownership risk.</li>
+            <li><strong>Investor:</strong> Use as pre-seed technical risk underwriting.</li>
+            <li><strong>Agency:</strong> Use before estimating project rescue or rebuild.</li>
+          </ul>
         </div>
 
         {/* ArcMoment Capture Opportunity:

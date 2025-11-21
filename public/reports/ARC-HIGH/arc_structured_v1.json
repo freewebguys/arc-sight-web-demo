@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0.0",
+
+  "arcRecord": {
+    "recordType": "ArcSight Architectural Decision Record",
+    "recordVersion": "ADR+ v1.0",
+    "issuedFor": "founder",
+    "decisionContext": "pre-build"
+  },
+
+  "arcId": "ARC-HIGH",
+  "assessmentDate": "2025-02-11",
+
+  "context": {
+    "audience": "founder",
+    "useCase": "pre-build",
+    "classification": "demo"
+  },
+
+  "stability": {
+    "architectureStabilityIndex": 34,
+    "instabilityTier": "Critical — Stop Building",
+    "survivalCapacity": 0,
+    "recommendation": "Rebuild"
+  },
+
+  "riskFactors": [
+    {
+      "name": "DB_SHARED_WRITE",
+      "level": "high",
+      "note": "Multiple domains write to shared tables: users (5 domains), payments (3 domains), sessions (3 domains)"
+    }
+  ],
+
+  "decisionTimeline": [
+    {
+      "phase": "Immediate",
+      "timeframe": "Before next feature",
+      "action": "Extract all shared tables into domain-specific services"
+    },
+    {
+      "phase": "Stabilization",
+      "timeframe": "1-2 weeks",
+      "action": "Refactor critical modules: auth, billing, orders, admin, notifications"
+    }
+  ],
+
+  "failureTrajectory": {
+    "order": ["users", "payments", "sessions"],
+    "shockwaveRadius": 6
+  },
+
+  "underwritingScore": {
+    "architectureViability": 34,
+    "scalabilityReadiness": 25,
+    "investmentStability": 30
+  },
+
+  "projectedDecisionImpact": {
+    "recommendedAction": "pause-building",
+    "severityOutcome": "high-risk",
+    "commonFounderResponse": "pause-build"
+  },
+
+  "disclaimer": {
+    "confidenceLevel": "indicative",
+    "dataOrigin": "demo",
+    "note": "This is an indicative architectural survival evaluation, not a full line-level code analysis."
+  }
+}
+
