@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import NavBar from '../components/NavBar';
+import Layout from '../components/Layout';
 
 interface Insight {
   rule_id: string;
@@ -80,11 +80,9 @@ export default function ArcDrift() {
   };
 
   return (
-    <div>
-      <NavBar />
-      <main className="bg-gray-50 min-h-screen py-12">
-        <div className="max-w-4xl mx-auto px-6 space-y-12">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Architecture Drift Analysis</h1>
+    <Layout>
+      <div className="space-y-12">
+        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8">Architecture Drift Analysis</h1>
 
         {/* Side-by-side comparison for Scan 1 vs Scan 2 */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -186,7 +184,7 @@ export default function ArcDrift() {
 
         {/* Footer Text */}
         <div className="border-t border-gray-200 pt-8">
-          <p className="text-base text-gray-600 leading-relaxed text-center">
+          <p className="text-gray-700 leading-relaxed text-center">
             This drift was detected without AI, without runtime tracing, and without human review — purely through deterministic analysis of code structure and schema ownership.
           </p>
         </div>
@@ -200,9 +198,8 @@ export default function ArcDrift() {
             Run ArcSight on My Architecture
           </a>
         </div>
-        </div>
-      </main>
-    </div>
+      </div>
+    </Layout>
   );
 }
 
